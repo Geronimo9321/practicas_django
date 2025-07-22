@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+    <p>
+        <h1>Detalle de los Productos {{producto.nombre}}</h1>
+
+         <!--{{productos}}La variable Productos de Django-->
+         <div class="lista_productos">
+            <img src="{{ producto.imagen.url }}">
+            <p><strong>PRECIO: </strong>{{producto.precio}}</p>
+            <p><strong>STOCK: </strong>{{producto.stock}}</p>
+         </div>
+    </p>
+
+{% endblock contenido_cuerpo %}

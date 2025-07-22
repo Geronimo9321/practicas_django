@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Ecommerce</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!--Referencia el href, para linkear a otras páginas-->
+    <div class="header">
+        <img src="{% static 'img/logo.jpeg' %}" alt="logo del informatorio">
+        <div>
+            <ul class="ul-menu">
+                <li><a href="{% url 'path_home' %}">Home</a></li>
+                <li><a href="{% url 'productos:path_listar_productos' %}">Productos</a></li>
+                <li><a href="{% url 'productos:path_listar_productos' %}">Rubros</a></li>
+                <li><a href="{% url 'productos:path_listar_productos' %}">Contacto</a></li>
+                <li><a href="{% url 'productos:path_listar_productos' %}">Sobre Nosotros</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="cuerpo">
+        {% block contenido_cuerpo %}
+
+        {% endblock contenido_cuerpo %}
+    </div>
+</body>
+</html>

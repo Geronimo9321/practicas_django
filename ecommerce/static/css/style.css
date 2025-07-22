@@ -1,0 +1,24 @@
+.header {
+    text-align: center;
+}
+
+.ul-menu li {
+    display: inline;
+    list-style: none;
+}
+
+.ul-menu li a {
+    text-decoration: none;
+}
+
+.cuerpo {
+    padding: 50px;
+}
+
+.ul_productos {
+    width: 33%;
+}
+
+.lita_producto {
+    display: inline-flex;
+}
