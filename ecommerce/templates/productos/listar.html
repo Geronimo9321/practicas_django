@@ -15,6 +15,7 @@
                 <li>{{p.precio}}</li>
                 <li><a href="{% url 'productos:path_detalle_productos' p.pk %}">Ver Detalle</a></li>
                 <li><a href="{% url 'productos:path_modificar_productos' p.pk %}">Modificar</a></li>
+                <li><a href="{% url 'productos:path_borrar_productos' p.pk %}">Eliminar</a></li>
             </ul>
             {% endfor %}
          </div>

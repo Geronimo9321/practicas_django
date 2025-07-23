@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from .models import Producto
@@ -39,4 +39,8 @@ class Modificar_Producto(UpdateView):
     model = Producto
     template_name = 'productos/modificar.html'
     form_class = FormularioModificarProducto
+    success_url = reverse_lazy('productos:path_listar_productos')
+
+class Borrar_Producto(DeleteView):
+    model = Producto
     success_url = reverse_lazy('productos:path_listar_productos')
