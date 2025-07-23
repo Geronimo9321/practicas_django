@@ -2,7 +2,9 @@
 
 {% block contenido_cuerpo %}
     <p>
-        <h1>Lista de los Productos</h1>
+        <h1>Lista de los Productos
+            <a href="{% url 'productos:path_crear_productos' %}">CREAR PRODUCTOS</a>
+        </h1>
 
          <!--{{productos}}La variable Productos de Django-->
          <div class="lista_productos">
@@ -12,6 +14,7 @@
                 <li>{{p.nombre}}</li>
                 <li>{{p.precio}}</li>
                 <li><a href="{% url 'productos:path_detalle_productos' p.pk %}">Ver Detalle</a></li>
+                <li><a href="{% url 'productos:path_modificar_productos' p.pk %}">Modificar</a></li>
             </ul>
             {% endfor %}
          </div>

@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from .models import Producto
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView
+from django.urls import reverse_lazy
 
+from .models import Producto
+from .forms import FormularioCrearProducto, FormularioModificarProducto
 # Create your views here.
 # PARA LISTAR LOS PRODUCTOS USO ORM.
 # __gt significa > (mayor)
@@ -25,3 +28,15 @@ class Detalle_Productos_Clase(DetailView): #Esto es una VISTA BASADA EN CLASES
     template = 'productos/detalle.html'
     model = Producto
     context_object_name = 'productos'
+
+class Crear_Producto(CreateView):
+    model = Producto
+    template_name = 'productos/crear.html'
+    form_class = FormularioCrearProducto
+    success_url = reverse_lazy('productos:path_listar_productos')
+
+class Modificar_Producto(UpdateView):
+    model = Producto
+    template_name = 'productos/modificar.html'
+    form_class = FormularioModificarProducto
+    success_url = reverse_lazy('productos:path_listar_productos')

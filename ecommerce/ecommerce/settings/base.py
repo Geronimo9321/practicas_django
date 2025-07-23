@@ -16,7 +16,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.productos', #agregar todas las apps que generé para que Django las encuentre
+    'apps.productos', 
+    'apps.genericos', #agregar todas las apps que generé para que Django las encuentre
 ]
 
 MIDDLEWARE = [

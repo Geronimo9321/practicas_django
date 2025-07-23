@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+    <p>
+        <h1>Modificar Producto {{producto.nombre}}</h1>
+
+         <!--{{productos}}La variable Productos de Django-->
+         <div>
+            <form method="post" enctype="multipart/form-data">{%csrf_token%} <!--Esto va siempre porque Django lo utiliza como metodo de seguridad-->
+                {{form.as_p}}
+                <button type="submit">MODIFICAR</button>
+
+            </form>
+         </div>
+    </p>
+
+{% endblock contenido_cuerpo %}
