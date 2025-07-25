@@ -14,5 +14,7 @@ urlpatterns = [
     path('', views.Home, name = 'path_home'),
 
     #INCLUIR LAS APP
-    path('Productos/', include('productos.urls'))
+    path('Productos/', include('productos.urls')),
+    path('Genericos/', include('genericos.urls'))
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

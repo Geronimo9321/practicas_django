@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+    <p>
+        <h1>
+            Rubros
+        </h1>
+
+         <!--{{productos}}La variable Productos de Django-->
+         <div class="lista_productos">
+            {% for r in rubros %}
+            <div>
+                <p>{{r.nombre}}</p>
+                <a href="{% url 'productos:path_filtro_rubro' %}"> <!--PREGUNTAR POR ESTO-->
+                    {% if r.imagen %}
+                        <img src="{{r.imagen.url}}" width="400" height="300">
+                    {% else %}
+                        <p>Sin imagen</p>
+                    {% endif %}
+                </a>
+                
+            </div>
+            {% endfor %}
+         </div>
+    </p>
+
+{% endblock contenido_cuerpo %}

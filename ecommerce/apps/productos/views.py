@@ -5,6 +5,8 @@ from django.urls import reverse_lazy
 
 from .models import Producto
 from .forms import FormularioCrearProducto, FormularioModificarProducto
+from genericos.models import Rubro
+
 # Create your views here.
 # PARA LISTAR LOS PRODUCTOS USO ORM.
 # __gt significa > (mayor)
@@ -44,3 +46,9 @@ class Modificar_Producto(UpdateView):
 class Borrar_Producto(DeleteView):
     model = Producto
     success_url = reverse_lazy('productos:path_listar_productos')
+
+def Filtrar_Rubro(request, pk):
+    rubro_filtrado = Rubro.objects.get(pk = pk)
+    productos_filtrados = Producto.objects.filter(rubro_filtrado)
+
+    return render(request, 'productos/filtrados.html', {'productos':productos_filtrados}, {'nombre_rubro':rubro_filtrado.nombre})
