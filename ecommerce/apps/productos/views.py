@@ -17,9 +17,19 @@ from genericos.models import Rubro
 
 def Listar_Productos(request): #Esto es una VISTA BASADA EN FUNCIONES
 
-    todos = Producto.objects.all() #Reemplazo las sentencias SQL por el ORM para traer los productos.
-    solo_stock = Producto.objects.filter(stock__gt = 0) #Es igual que hacer SELECT * FROM Producto where stock > 0
-    return render(request, 'productos/listar.html', {'productos':solo_stock})
+    valor_a_ordenar = request.GET.get('orden', None)#Esta variable devuelve un orden desc-asc o simplemente
+    if valor_a_ordenar:
+        #Significa que la orden si vino
+        if valor_a_ordenar == 'asc':
+            solo_stock = Producto.objects.filter(stock__gt = 0).order_by('precio')
+        else:
+            solo_stock = Producto.objects.filter(stock__gt = 0).order_by('-precio')
+    else:
+        solo_stock = Producto.objects.filter(stock__gt = 0) #Es igual que hacer SELECT * FROM Producto where stock > 0
+
+    #todos = Producto.objects.all() #Reemplazo las sentencias SQL por el ORM para traer los productos.
+    todos_rubros = Rubro.objects.all()
+    return render(request, 'productos/listar.html', {'productos':solo_stock, 'rubros':todos_rubros})
 
 def Detalle_Productos(request,pk):
 
@@ -49,6 +59,6 @@ class Borrar_Producto(DeleteView):
 
 def Filtrar_Rubro(request, pk):
     rubro_filtrado = Rubro.objects.get(pk = pk)
-    productos_filtrados = Producto.objects.filter(rubro_filtrado)
+    productos_filtrados = Producto.objects.filter(rubro=rubro_filtrado) #Solución  
 
-    return render(request, 'productos/filtrados.html', {'productos':productos_filtrados}, {'nombre_rubro':rubro_filtrado.nombre})
+    return render(request, 'productos/filtrados.html', {'productos':productos_filtrados, 'nombre_rubro':rubro_filtrado.nombre})

@@ -5,12 +5,21 @@
         <h1>Lista de los Productos
             <a href="{% url 'productos:path_crear_productos' %}">CREAR PRODUCTOS</a>
         </h1>
-
+        <!--ver porque muestra el codigo-->
+         <div>Rubros: 
+             {% for r in rubros %}
+                <a href="{% url 'productos:path_filtrar_rubro' r.pk %}">{{r.nombre}}</a> <!--Con esto llamo a los rubros, en listar productos-->
+             {% endfor %}
+         </div>
+         <div>Orden:
+            <a href="{% url 'productos:path_listar_productos' %}?orden=dsc">Mayor Precio</a> <!--orden descendente-->
+            <a href="{% url 'productos:path_listar_productos' %}?orden=asc">Menor Precio</a> <!--orden ascendente-->
+         </div>
          <!--{{productos}}La variable Productos de Django-->
          <div class="lista_productos">
             {% for p in productos %}
             <ul class="ul_productos">
-                <li><img src="{{p.imagen.url}}" widt="300" alt="imagen del producto"></li>
+                <li><img src="{{p.imagen.url}}" width="300" alt="imagen del producto"></li>
                 <li>{{p.nombre}}</li>
                 <li>{{p.precio}}</li>
                 <li><a href="{% url 'productos:path_detalle_productos' p.pk %}">Ver Detalle</a></li>
