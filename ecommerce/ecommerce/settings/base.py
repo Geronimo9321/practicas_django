@@ -9,6 +9,11 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+from django.urls import reverse_lazy
+LOGIN_REDIRECT_URL = reverse_lazy('path_home')
+LOGOUT_REDIRECT_URL = reverse_lazy('path_home')
+LOGIN_URL = reverse_lazy('usuario:path_login')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -17,7 +22,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.productos', 
-    'apps.genericos', #agregar todas las apps que generé para que Django las encuentre
+    'apps.genericos', 
+    'apps.usuario',
+    #agregar todas las apps que generé para que Django las encuentre
 ]
 
 MIDDLEWARE = [

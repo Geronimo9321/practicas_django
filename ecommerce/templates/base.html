@@ -10,6 +10,7 @@
 </head>
 <body>
     <!--Referencia el href, para linkear a otras páginas-->
+    <!--{% url 'nombre_donde_buscar:aca_va_el_path' %}-->
     <div class="header">
         <img src="{% static 'img/logo.jpeg' %}" alt="logo del informatorio">
         <div>
@@ -17,8 +18,9 @@
                 <li><a href="{% url 'path_home' %}">Home</a></li>
                 <li><a href="{% url 'productos:path_listar_productos' %}">Productos</a></li>
                 <li><a href="{% url 'genericos:path_listar_rubros' %}">Rubros</a></li>
-                <li><a href="{% url 'productos:path_listar_productos' %}">Contacto</a></li>
-                <li><a href="{% url 'productos:path_listar_productos' %}">Sobre Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="{% url 'usuario:path_login' %}">Login</a></li>
             </ul>
         </div>
     </div>

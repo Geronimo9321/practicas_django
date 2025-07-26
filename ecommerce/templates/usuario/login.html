@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+
+    <h4>LOGIN</h4>
+
+    <form method="post">{% csrf_token %}
+        {{form.errors}}<!--Esto va a mostrar si hay errores-->
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button type="submit">Aceptar</button>
+    </form>
+
+{% endblock contenido_cuerpo %}
