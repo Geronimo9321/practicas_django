@@ -11,7 +11,7 @@
             {% for r in rubros %}
             <div>
                 <p>{{r.nombre}}</p>
-                <a href="{% url 'productos:path_filtro_rubro' %}"> <!--PREGUNTAR POR ESTO-->
+                <a href="{% url 'productos:path_filtrar_rubro' r.pk%}"> <!--PREGUNTAR POR ESTO-->
                     {% if r.imagen %}
                         <img src="{{r.imagen.url}}" width="400" height="300">
                     {% else %}

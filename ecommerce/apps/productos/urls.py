@@ -13,5 +13,5 @@ urlpatterns = [
     path('Eliminar/<int:pk>', views.Borrar_Producto.as_view(), name= 'path_borrar_productos'),
 
     #FILTRO POR RUBRO
-    path('Filtrados/<int:pk>', views.Filtrar_Rubro, name='path_filtro_rubros'), #porque no reconoce esto
+    path('Filtrados/<int:pk>', views.Filtrar_Rubro, name='path_filtrar_rubro'), #porque no reconoce esto
 ]
