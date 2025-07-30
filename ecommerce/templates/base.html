@@ -10,7 +10,7 @@
 </head>
 <body>
     <!--Referencia el href, para linkear a otras páginas-->
-    <!--{% url 'nombre_donde_buscar:aca_va_el_path' %}-->
+
     <div class="header">
         <img src="{% static 'img/logo.jpeg' %}" alt="logo del informatorio">
         <div>
@@ -20,7 +20,17 @@
                 <li><a href="{% url 'genericos:path_listar_rubros' %}">Rubros</a></li>
                 <li><a href="#">Contacto</a></li>
                 <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="{% url 'usuario:path_login' %}">Login</a></li>
+                {% if user.is_autenticated %}
+                    <span>Hola {{user.name}}</span>
+                    <li>
+                        <form method="post" action="{% url 'usuario:path_logout' %}">{% csrf_token %}
+                            <button type="submit">Cerrar Sesión</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'usuario:path_login' %}">Login</a></li>
+                    <li><a href="{% url 'usuario:path_registro' %}">Registro</a></li>
+                {%endif%}
             </ul>
         </div>
     </div>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+
+   <h4>Registro de usuario</h4>
+
+   <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+    {{form.as_p}}
+    <button type="submit">Registrar</button>
+    
+   </form>
+
+{% endblock contenido_cuerpo %}
