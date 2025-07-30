@@ -14,6 +14,17 @@ from genericos.models import Rubro
 # __lt significa < (menor)
 # __lte significa <= (menor igual)
 
+#DECORADOR PARA UNA VISTA BASADA EN FUNCIONES QUE CONTROLA SI EL USUARIO ESTA LOGUEADO
+from django.contrib.auth.decorators import login_required
+
+#MIXINS PARA UNA VISTA BASADA EN CLASES QUE CONTROLA SI EL USUARIO ESTA LOGUEADO
+from django.contrib.auth.mixins import LoginRequiredMixin 
+
+#DECORADOR PARA UNA VISTA BASADA EN FUNCIONES PARA CONTROLAR SI EL USUARIO ES ESTAFF
+from django.contrib.admin.views.decorators import staff_member_required
+
+#MIXINS PARA UNA VISTA BASADA EN CLASES PARA CONTROLAR EL TIPO DE USUARIO () 
+#from django.contrib.auth.mixins import UserPassesTestMixin
 
 def Listar_Productos(request): #Esto es una VISTA BASADA EN FUNCIONES
 
