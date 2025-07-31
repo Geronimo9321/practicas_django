@@ -6,10 +6,28 @@
 
          <!--{{productos}}La variable Productos de Django-->
          <div class="lista_productos">
-            <img src="{{ producto.imagen.url }}">
+            <img src="{{ productos.imagen.url }}">
             <p><strong>PRECIO: </strong>{{producto.precio}}</p>
             <p><strong>STOCK: </strong>{{producto.stock}}</p>
          </div>
     </p>
 
+    <div>
+        <h1>COMENTARIOS</h1>
+
+        {% for c in producto.misComentarios %}
+            <p>{{c.texto}} / {{c.usuario}}
+                {% if c.usuario == user or user.is_staff %}
+                <a href="{% url 'comentario:path_eliminar_comentario' c.pk %}">Eliminar</a>
+                {% endif %}
+            </p>
+        {% endfor %}
+
+        {% if user.is_authenticated %}
+        <form method="post" action="{% url 'comentario:path_comentar' producto.pk %}">{% csrf_token %}
+            <textarea type="texto" name="comentario" rows="5" cols="30"></textarea>
+            <button type="submit">COMENTAR</button>
+        </form>
+        {% endif %}
+    </div>
 {% endblock contenido_cuerpo %}

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'apps.productos', 
     'apps.genericos', 
     'apps.usuario',
+    'apps.comentario',
     #agregar todas las apps que generé para que Django las encuentre
 ]
 

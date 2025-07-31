@@ -16,6 +16,7 @@ urlpatterns = [
     #INCLUIR LAS APP
     path('Productos/', include('productos.urls')),
     path('Genericos/', include('genericos.urls')),
-    path('Usuario/', include('usuario.urls'))
+    path('Usuario/', include('usuario.urls')),
+    path('Comentario/', include('comentario.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

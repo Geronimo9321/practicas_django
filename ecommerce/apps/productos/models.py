@@ -18,6 +18,9 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre
     
+    def misComentarios(self):
+        return self.comentario_set.all()
+
 #MIGRACIONES
 #PASOS
 # 1 - verificar que cambios existen

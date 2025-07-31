@@ -23,9 +23,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 #DECORADOR PARA UNA VISTA BASADA EN FUNCIONES PARA CONTROLAR SI EL USUARIO ES ESTAFF
 from django.contrib.admin.views.decorators import staff_member_required
 
-#MIXINS PARA UNA VISTA BASADA EN CLASES PARA CONTROLAR EL TIPO DE USUARIO () 
-#from django.contrib.auth.mixins import UserPassesTestMixin
+#MIXINS PARA UNA VISTA BASADA EN CLASES PARA CONTROLAR EL TIPO DE USUARIO (LO USAMOS PARA VER SI ES ESTAFF) 
+from django.contrib.auth.mixins import UserPassesTestMixin
 
+@login_required
+@staff_member_required
 def Listar_Productos(request): #Esto es una VISTA BASADA EN FUNCIONES
 
     valor_a_ordenar = request.GET.get('orden', None)#Esta variable devuelve un orden desc-asc o simplemente
@@ -52,11 +54,17 @@ class Detalle_Productos_Clase(DetailView): #Esto es una VISTA BASADA EN CLASES
     model = Producto
     context_object_name = 'productos'
 
-class Crear_Producto(CreateView):
+class Crear_Producto(LoginRequiredMixin, UserPassesTestMixin,CreateView):
     model = Producto
     template_name = 'productos/crear.html'
     form_class = FormularioCrearProducto
     success_url = reverse_lazy('productos:path_listar_productos')
+
+    def test_func(self):
+        if self.request.user.is_staff:
+            return True
+        else:
+            return False
 
 class Modificar_Producto(UpdateView):
     model = Producto
